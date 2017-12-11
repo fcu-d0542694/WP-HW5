@@ -1,0 +1,151 @@
+<html>
+	<head>
+		<title>Custom Markers</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<style>
+			#map {
+				height: 100%;
+			}
+			html, body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="map"></div>
+		<script>
+			var map;
+			function initMap() {
+			map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 16,
+			center: new google.maps.LatLng(24.206030, 120.629052),
+			mapTypeId: 'roadmap'
+			});
+			var icons = {
+			gas: {
+			icon: "./b.png"
+			},
+			mail: {
+			icon: "./a.png"
+			}
+			};
+			var features = [
+			{
+			position: new google.maps.LatLng(24.183082,120.614593),
+			type: 'gas'
+			}, {
+			position: new google.maps.LatLng(24.171323,120.643930),
+			type: 'gas'
+			}, {
+			position: new google.maps.LatLng(24.184418,120.590368),
+			type: 'gas'
+			}, {
+			position: new google.maps.LatLng(24.200782,120.656976),
+			type: 'gas'
+			}, {
+			position: new google.maps.LatLng(24.208176,120.651026),
+			type: 'gas'
+			} , {
+			position: new google.maps.LatLng(24.183941,120.629771),
+			type: 'gas'
+			}, {
+			position: new google.maps.LatLng(24.163508,120.650468),
+			type: 'gas'
+			}, {
+			position: new google.maps.LatLng(24.182369,120.633628),
+			type: 'gas'
+			}
+			, {
+			position: new google.maps.LatLng(24.182917,120.601329),
+			type: 'gas'
+			}
+			, {
+			position: new google.maps.LatLng(24.192622,120.623166),
+			type: 'gas'
+			}
+			, {
+			position: new google.maps.LatLng(24.174953,120.604320),
+			type: 'gas'
+			}
+			, {
+			position: new google.maps.LatLng(24.205147,120.629084),
+			type: 'gas'
+			}
+			, {
+			position: new google.maps.LatLng(24.195164,120.644256),
+			type: 'gas'
+			}
+			, {
+			position: new google.maps.LatLng(24.201209,120.609971),
+			type: 'gas'
+			}
+			, {
+			position: new google.maps.LatLng(24.205147,120.629084),
+			type: 'gas'
+			}, {
+			position: new google.maps.LatLng(24.172142,120.645401),
+			type: 'gas'
+			}, {
+			position: new google.maps.LatLng(24.161804,120.650496),
+			type: 'gas'
+			}, {
+			position: new google.maps.LatLng(24.201276,120.662677),
+			type: 'gas'
+			}, {
+			position: new google.maps.LatLng(24.166172,120.618963),
+			type: 'gas'
+			}, {
+			position: new google.maps.LatLng(24.176690,120.637643),
+			type: 'mail'
+			}, {
+			position: new google.maps.LatLng(24.183478,120.618559),
+			type: 'mail'
+			}, {
+			position: new google.maps.LatLng(24.175272,120.649134),
+			type: 'mail'
+			}, {
+			position: new google.maps.LatLng(24.164694,120.654240),
+			type: 'mail'
+			}, {
+			position: new google.maps.LatLng(24.190603,120.612347),
+			type: 'mail'
+			}, {
+			position: new google.maps.LatLng(24.156532,120.652867),
+			type: 'mail'
+			}, {
+			position: new google.maps.LatLng(24.182416,120.602728),
+			type: 'mail'
+			}, {
+			position: new google.maps.LatLng(24.169928,120.606454),
+			type: 'mail'
+			}, {
+			position: new google.maps.LatLng(24.183957,120.604835),
+			type: 'mail'
+			}
+			];
+			var shape = {
+					  coords: [1, 1, 1, 20, 18, 20, 18, 1],
+					  type: 'poly'
+					};
+			features.forEach(function(feature) {
+			var marker = new google.maps.Marker({
+			position: feature.position,
+			icon: icons[feature.type].icon,
+			map: map
+			});
+			var infowindow = new google.maps.InfoWindow({
+			content: feature.contentString
+			});
+			marker.addListener('mouseover', function() {
+			infowindow.open(map, marker);
+			});
+			});
+			}
+		</script>
+			<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCu15fK-Ihd0ncSG4hntsg3pdq95rkgL2A&callback=initMap">
+		</script>
+	</body>
+</html>
